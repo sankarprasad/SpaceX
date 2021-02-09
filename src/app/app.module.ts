@@ -12,6 +12,8 @@ import { CommonService } from "./service/common.service";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AppShellRenderDirective } from "./directives/app-shell-render.directive";
 import { AppShellNoRenderDirective } from "./directives/app-shell-norender.directive copy";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [
@@ -27,7 +29,8 @@ import { AppShellNoRenderDirective } from "./directives/app-shell-norender.direc
 		BrowserModule.withServerTransition({ appId: "serverApp" }),
 		HttpClientModule,
 		AppRoutingModule,
-		StoreModule.forRoot({}, {})
+		StoreModule.forRoot({}, {}),
+		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 	],
 	providers: [CommonService],
 	bootstrap: [AppComponent]
