@@ -1,0 +1,5 @@
+<div class="spinner" *ngIf="loading"></div>
+<h1 *ngIf="!spaceProgramList.length && !loading" class="list__header">No Space Programs Found</h1>
+<div class="list">
+    <app-space-launch-program [program]="program" *ngFor="let program of spaceProgramList"></app-space-launch-program>
+</div>

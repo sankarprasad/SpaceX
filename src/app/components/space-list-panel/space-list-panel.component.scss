@@ -1,0 +1,27 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 45rem;
+    align-items: stretch;
+    justify-content: flex-start;
+    &__header {
+        text-align: center;
+    }
+    & > * {
+        flex: 1;
+        margin-bottom: 1rem;
+        &:not(:nth-child(4n)) {
+            margin-right: 1rem;
+        }
+    }
+}
+@media (max-width: 102.4rem) {
+    .list {
+        & > * {
+            margin-right: 1rem;
+            &:nth-child(4n) {
+                margin-right: 1rem;
+            }
+        }
+    }
+}

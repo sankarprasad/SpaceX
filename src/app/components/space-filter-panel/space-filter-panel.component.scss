@@ -1,0 +1,28 @@
+.card {
+    max-width: 70rem;
+}
+
+.filter {
+    &__header {
+        text-align: center;
+        border-bottom: 1px solid;
+        margin: 0 2rem;
+    }
+    &__ly {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 1rem;
+        & > * {
+            flex: 1 0 50%;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & > button {
+                max-width: 7rem;
+            }
+        }
+    }
+}

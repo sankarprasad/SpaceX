@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card__image">
+        <img src="{{program?.links?.mission_patch_small}}" loading="lazy" alt="program__img">
+    </div>
+    <div class="card__body">
+        <div class="card__title">
+            <span> {{program?.mission_name}} #{{program?.flight_number}}</span>
+        </div>
+        <div class="card__list">
+            <div class="card__item">
+                <span class="card__tag">Mission Ids: </span>
+                <ul class="card__value card__value--mission" *ngFor="let mission of program?.mission_id">
+                    <li>{{mission}}</li>
+                </ul>
+            </div>
+            <div class="card__item">
+                <span class="card__tag">Launch Year: </span>
+                <span class="card__value">{{program?.launch_year}}</span>
+            </div>
+            <div class="card__item">
+                <span class="card__tag">Successful Launch: </span>
+                <span class="card__value">{{program?.launch_success}}</span>
+            </div>
+            <div class="card__item">
+                <span class="card__tag">Successful Landing: </span>
+                <span class="card__value">{{program?.land_success}}</span>
+            </div>
+
+        </div>
+    </div>
+</div>

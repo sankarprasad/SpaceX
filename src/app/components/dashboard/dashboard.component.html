@@ -1,0 +1,9 @@
+<div class="main-layout">
+    <div class="sidebar">
+        <app-space-filter-panel></app-space-filter-panel>
+    </div>
+    <div class="content" *appShellNoRender="true">
+        <app-space-list-panel [spaceProgramList]="programs" [loading]="loading"></app-space-list-panel>
+    </div>
+    <div class="spinner" *appShellRender="true"></div>
+</div>
