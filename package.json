@@ -3,8 +3,8 @@
 	"version": "0.0.0",
 	"scripts": {
 		"ng": "ng",
-		"start": "node dist/Angular/server/main.js",
-		"build": "ng build",
+		"start": "npm run serve:ssr",
+		"build": "npm run build:ssr",
 		"test": "ng test",
 		"lint": "ng lint",
 		"e2e": "ng e2e",
@@ -51,9 +51,5 @@
 		"ts-node": "~8.3.0",
 		"tslint": "~6.1.0",
 		"typescript": "~4.1.2"
-	},
-	"engines": {
-		"node": "14.15.4",
-		"npm": "6.14.10"
 	}
 }
