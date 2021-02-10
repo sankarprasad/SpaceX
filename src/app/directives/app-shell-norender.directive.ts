@@ -5,9 +5,9 @@ import {
 import { isPlatformServer } from "@angular/common";
 
 @Directive({
-	selector: "[appShellRender]"
+	selector: "[appShellNoRender]"
 })
-export class AppShellRenderDirective implements OnInit {
+export class AppShellNoRenderDirective implements OnInit {
 
 	constructor(
 		@Inject(PLATFORM_ID) private readonly platformId: any,
@@ -19,11 +19,12 @@ export class AppShellRenderDirective implements OnInit {
 
 	ngOnInit() {
 		if (isPlatformServer(this.platformId)) {
-			this.viewContainer.createEmbeddedView(this.templateRef);
+			this.viewContainer.clear();
 		}
 		else {
-			this.viewContainer.clear();
+			this.viewContainer.createEmbeddedView(this.templateRef);
 		}
 
 	}
+
 }

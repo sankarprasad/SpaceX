@@ -11,9 +11,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { CommonService } from "./service/common.service";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { AppShellRenderDirective } from "./directives/app-shell-render.directive";
-import { AppShellNoRenderDirective } from "./directives/app-shell-norender.directive copy";
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { AppShellNoRenderDirective } from "./directives/app-shell-norender.directive";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { environment } from "../environments/environment";
 
 @NgModule({
 	declarations: [
@@ -30,7 +30,7 @@ import { environment } from '../environments/environment';
 		HttpClientModule,
 		AppRoutingModule,
 		StoreModule.forRoot({}, {}),
-		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+		ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production })
 	],
 	providers: [CommonService],
 	bootstrap: [AppComponent]

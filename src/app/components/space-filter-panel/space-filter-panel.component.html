@@ -5,7 +5,7 @@
         <div class="filter__ly">
             <div *ngFor="let year of launchYearsArray">
                 <button class="button" (click)="navigateTo('launch_year', year)"
-                    [ngClass]="{'button__active': this.launch_year == year}">
+                    [ngClass]="{'button__active': this.launchYear == year}">
                     {{year}}
                 </button>
             </div>
@@ -16,13 +16,13 @@
         <div class="filter__ly">
             <div>
                 <button class="button" (click)="navigateTo('launch_success', true)"
-                    [ngClass]="{'button__active': this.launch_success === 'true'}">
+                    [ngClass]="{'button__active': this.launchSuccess === 'true'}">
                     True
                 </button>
             </div>
             <div>
                 <button class="button" (click)="navigateTo('launch_success', false)"
-                    [ngClass]="{'button__active': this.launch_success === 'false'}">
+                    [ngClass]="{'button__active': this.launchSuccess === 'false'}">
                     False
                 </button>
             </div>
@@ -33,13 +33,13 @@
         <div class="filter__ly">
             <div>
                 <button class="button" (click)="navigateTo('land_success', true)"
-                    [ngClass]="{'button__active': this.land_success === 'true'}">
+                    [ngClass]="{'button__active': this.landSuccess === 'true'}">
                     True
                 </button>
             </div>
             <div>
                 <button class="button" (click)="navigateTo('land_success', false)"
-                    [ngClass]="{'button__active': this.land_success === 'false'}">
+                    [ngClass]="{'button__active': this.landSuccess === 'false'}">
                     False
                 </button>
             </div>

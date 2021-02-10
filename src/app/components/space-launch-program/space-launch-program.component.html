@@ -12,6 +12,7 @@
                 <ul class="card__value card__value--mission" *ngFor="let mission of program?.mission_id">
                     <li>{{mission}}</li>
                 </ul>
+                <span *ngIf="program?.mission_id?.length === 0">No Mission Ids Found</span>
             </div>
             <div class="card__item">
                 <span class="card__tag">Launch Year: </span>
@@ -23,9 +24,8 @@
             </div>
             <div class="card__item">
                 <span class="card__tag">Successful Landing: </span>
-                <span class="card__value">{{program?.land_success}}</span>
+                <span class="card__value">{{program?.land_success !== null? program?.land_success: "N/A"}}</span>
             </div>
-
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Subscription } from "rxjs";
 import { tap } from "rxjs/operators";
 
 @Component({
@@ -7,13 +8,14 @@ import { tap } from "rxjs/operators";
 	templateUrl: "./space-filter-panel.component.html",
 	styleUrls: ["./space-filter-panel.component.scss"]
 })
-export class SpaceFilterPanelComponent implements OnInit {
+export class SpaceFilterPanelComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	startYear = 2006;
 	launchYearsArray = Array(14).fill(0).map((el, index) => index + this.startYear);
-	launch_year: any;
-	launch_success: any;
-	land_success: any;
+	launchYear: any;
+	launchSuccess: any;
+	landSuccess: any;
+	routeSub: Subscription = new Subscription();
 
 	constructor(
 		private readonly router: Router,
@@ -23,20 +25,20 @@ export class SpaceFilterPanelComponent implements OnInit {
 	ngOnInit(): void { }
 
 	ngAfterViewInit() {
-		this.route.queryParams
+		this.routeSub = this.route.queryParams
 			.pipe(
 				tap(param => {
-					this.launch_year = null;
-					this.launch_success = null;
-					this.land_success = null;
+					this.launchYear = null;
+					this.launchSuccess = null;
+					this.landSuccess = null;
 					if ("launch_year" in param) {
-						this.launch_year = param.launch_year
+						this.launchYear = param.launch_year
 					}
 					if ("launch_success" in param) {
-						this.launch_success = param.launch_success
+						this.launchSuccess = param.launch_success
 					}
 					if ("land_success" in param) {
-						this.land_success = param.land_success
+						this.landSuccess = param.land_success
 					}
 				})
 			).subscribe()
@@ -46,13 +48,17 @@ export class SpaceFilterPanelComponent implements OnInit {
 		const cat: any = category;
 		let subcat: any = subcategory;
 		if (
-			cat === "launch_year" && subcat == this.launch_year ||
-			cat === "launch_success" && String(subcat) === String(this.launch_success) ||
-			cat === "land_success" && String(subcat) === String(this.land_success)
+			cat === "launch_year" && String(subcat) === String(this.launchYear) ||
+			cat === "launch_success" && String(subcat) === String(this.launchSuccess) ||
+			cat === "land_success" && String(subcat) === String(this.landSuccess)
 		) {
 			subcat = null;
 		}
 		this.router.navigate(["/dashboard"], { queryParams: { [cat]: subcat }, queryParamsHandling: "merge" });
+	}
+
+	ngOnDestroy() {
+		this.routeSub.unsubscribe();
 	}
 
 }
