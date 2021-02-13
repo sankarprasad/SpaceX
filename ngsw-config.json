@@ -31,11 +31,12 @@
     {
       "name": "spacex-api",
       "urls": [
-        "https://api.spacexdata.com/v3/launches?limit=100"
+        "https://api.spacexdata.com/v3/launches?limit=100",
+        "https://images2.imgbox.com/**"
       ],
       "cacheConfig": {
         "strategy": "freshness",
-        "maxSize": 20,
+        "maxSize": 200,
         "maxAge": "1h",
         "timeout": "5s"
       }

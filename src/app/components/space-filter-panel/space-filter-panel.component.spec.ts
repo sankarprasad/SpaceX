@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ActivatedRoute, Router } from "@angular/router";
 import { of } from "rxjs/internal/observable/of";
@@ -16,8 +17,8 @@ describe("SpaceFilterPanelComponent", () => {
 					queryParams: of({}),
 				}
 			}],
-		})
-			.compileComponents();
+			imports: [HttpClient]
+		}).compileComponents();
 	});
 
 	beforeEach(() => {
@@ -28,5 +29,9 @@ describe("SpaceFilterPanelComponent", () => {
 
 	it("should create", () => {
 		expect(component).toBeTruthy();
+	});
+	// new test by ngentest
+	it("should run #ngOnInit()", async () => {
+		component.ngOnInit();
 	});
 });

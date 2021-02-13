@@ -1,7 +1,5 @@
-<div class="spinner" *ngIf="loading"></div>
-<h1 *ngIf="!spaceProgramList.length && !loading" class="list__header">No Space Programs Found</h1>
 <div class="list">
-    <div class="card" *ngFor="let program of spaceProgramList">
+    <div class="card" *ngFor="let program of (loadingPrograms$ | async)">
         <div class="card__image">
             <img src="{{program?.links?.mission_patch_small}}" loading="lazy" alt="program__img">
         </div>
@@ -33,3 +31,5 @@
         </div>
     </div>
 </div>
+
+<div class="spinner" *ngIf="loading$ | async"></div>

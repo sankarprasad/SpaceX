@@ -1,29 +1,43 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+// tslint:disable
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { SpaceListPanelComponent } from "./space-list-panel.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-describe("SpaceListPanelComponent", () => {
+import { SpaceListPanelComponent } from './space-list-panel.component';
+import { CommonService } from 'src/app/service/common.service';
+
+describe('SpaceListPanelComponent', () => {
 	let component: SpaceListPanelComponent;
 	let fixture: ComponentFixture<SpaceListPanelComponent>;
-
-	beforeEach(async () => {
-		await TestBed.configureTestingModule({
-			declarations: [SpaceListPanelComponent]
-		})
-			.compileComponents();
-	});
-
 	beforeEach(() => {
+		TestBed.configureTestingModule({
+			imports: [FormsModule, ReactiveFormsModule],
+			declarations: [
+				SpaceListPanelComponent
+			],
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+			providers: [
+
+			]
+		}).overrideComponent(SpaceListPanelComponent, {
+
+		}).compileComponents();
 		fixture = TestBed.createComponent(SpaceListPanelComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
+		component = fixture.debugElement.componentInstance;
 	});
 
-	it("should create", () => {
+	afterEach(() => {
+
+		fixture.destroy();
+	});
+
+	it('should run #constructor()', async () => {
 		expect(component).toBeTruthy();
 	});
-	// new test by ngentest
-	it("should run #ngOnInit()", async () => {
-		component.ngOnInit();
+
+	it('should run #ngOnInit()', async () => {
+
 	});
+
 });
