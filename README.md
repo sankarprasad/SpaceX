@@ -1,3 +1,7 @@
+# Lighthouse
+
+<img src="src/assets/Lighthouse.png" alt="Lighthouse Logo" title="Light House Score" align="middle" height="200" />
+
 # Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
