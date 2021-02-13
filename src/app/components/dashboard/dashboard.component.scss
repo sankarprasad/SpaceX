@@ -1,37 +1,43 @@
 .main-layout {
 	display: flex;
-	justify-content: space-between;
-	height: 100%;
-	padding: 2rem;
-	min-height: 100vh;
+	flex-direction: row;
+	padding: 1rem;
 	& > * {
 		&:not(:last-child) {
-			margin-right: 2rem;
+			margin-right: 1rem;
 		}
 	}
 }
 .sidebar {
-	flex: 1;
-	max-width: 35rem;
+	flex: 1 0 20%;
 }
 .content {
-	flex: 1 1 100%;
+	flex: 1 0 80%;
+}
+
+@media (min-width: 701px) and (max-width: 1024px) {
+	.main-layout {
+		display: flex;
+		flex-direction: row;
+	}
+	.content {
+		flex: 1 0 66.67%;
+	}
+	.sidebar {
+		flex: 1 0 33.33%;
+	}
 }
 
 @media (max-width: 700px) {
 	.main-layout {
 		display: flex;
 		flex-direction: column;
-		& > *:not(:last-child) {
-			margin-right: 1rem;
+		& > * {
+			flex: 1;
+			margin-right: 0 !important;
+			&:not(:last-child) {
+				margin-bottom: 1rem;
+			}
 		}
-	}
-	.sidebar {
-		flex: 1 1 100%;
-		margin-bottom: 1rem;
-		max-width: 100%;
-	}
-	.content {
-		flex: 1 1 100%;
 	}
 }

@@ -7,7 +7,7 @@ import { SwUpdate } from "@angular/service-worker";
 	styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-	title = "Angular";
+	title = "Space X";
 	constructor(private readonly swUpdate: SwUpdate) { }
 	ngOnInit() {
 		if (this.swUpdate.isEnabled) {

@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 				}),
 				filter(params => !!params),
 				switchMap(res => this.common.fetchData(res)),
-				map(res => Object.values(res).map(item => ({ ...item, land_success: item.rocket?.first_stage.cores?.[0].land_success }))),
+				map(res => Object.values(res).map(item => ({ ...item, land_success: item?.rocket?.first_stage.cores?.[0].land_success }))),
 				tap(res => {
 					this.loading = false;
 					this.programs = res
@@ -45,6 +45,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this.routeSub.unsubscribe()
+		this.routeSub.unsubscribe();
 	}
 }
