@@ -14,10 +14,7 @@ describe('DashboardComponent', () => {
 			declarations: [
 				DashboardComponent
 			],
-			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
-			providers: [
-
-			]
+			schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 		}).overrideComponent(DashboardComponent, {
 
 		}).compileComponents();

@@ -1,6 +1,8 @@
 import { fakeAsync, TestBed, tick } from "@angular/core/testing";
 import { CommonService } from "./common.service";
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
+import { ActivatedRoute, Router } from "@angular/router";
+import { of } from "rxjs";
 
 // tslint:disable-next-line: max-line-length
 export const PL_MOCK = JSON.parse(JSON.stringify([
@@ -755,10 +757,28 @@ export const PL_MOCK = JSON.parse(JSON.stringify([
 describe("CommonService", () => {
 	let service: CommonService;
 	let httpTestingController: HttpTestingController;
+	const urlObj: { [key: string]: null | string } = {
+		launch_year: "2006",
+		launch_success: "true",
+		land_success: "true"
+	}
+	const router = jasmine.createSpyObj("Router", ["navigate"]);
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			imports: [HttpClientTestingModule],
-			providers: [CommonService]
+			providers: [CommonService,
+				{
+					provide: ActivatedRoute,
+					useValue: {
+						queryParams: of({
+							launch_year: null,
+							launch_success: null,
+							land_success: null
+						})
+					}
+				},
+				{ provide: Router, useValue: router }
+			]
 		});
 		service = TestBed.inject(CommonService);
 		httpTestingController = TestBed.inject(HttpTestingController);
@@ -773,11 +793,21 @@ describe("CommonService", () => {
 			.subscribe(pl => {
 				expect(pl).toEqual(PL_MOCK)
 			});
-		const req = httpTestingController.expectOne("https://api.spacexdata.com/v3/launches?limit=100");
-		expect(req.request.method).toEqual("GET");
 
-		req.flush(Object.values(PL_MOCK));
+		const req = httpTestingController.expectOne("https://api.spacexdata.com/v3/launches?limit=100&launch_year=null&launch_success=null&land_success=null");
+		expect(req.request.method).toEqual("GET");
+		// req.flush(Object.values(PL_MOCK));
 		tick();
 		httpTestingController.verify();
 	}));
+
+	it("should run #buildUrl()", async () => {
+		const paramString = "?limit=100";
+		spyOn(service, "buildUrl").and.returnValue(`${URL}${paramString}`);
+	})
+
+	it("should run #getUrlObj()", async () => {
+		spyOn(service, "getUrlTree").and.returnValue(urlObj);
+	})
+
 });
